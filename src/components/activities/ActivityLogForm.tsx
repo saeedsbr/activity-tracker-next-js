@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const categories = [
-    { id: 1, name: 'STUDY', color: 'bg-blue-500' },
+    { id: 1, name: 'STUDY', color: 'bg-gray-900' },
     { id: 2, name: 'BUSINESS', color: 'bg-green-500' },
-    { id: 3, name: 'HEALTH', color: 'bg-red-500' },
+    { id: 3, name: 'HEALTH', color: 'bg-gray-800' },
 ]
 
 export function ActivityLogForm() {
@@ -29,40 +29,42 @@ export function ActivityLogForm() {
         // Reset form
         setActivityName('')
         setSelectedCategory(null)
+        // Alert or Toast could be added here
+        alert('Activity logged successfully! 🔥')
     }
 
     return (
-        <Card>
+        <Card className="bg-[#111827] border-[#1f2937] rounded-2xl shadow-xl">
             <CardHeader>
-                <CardTitle>Log New Activity</CardTitle>
+                <CardTitle className="text-lg font-bold text-white">Log Activity</CardTitle>
             </CardHeader>
             <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                        <label className="text-sm font-medium">Activity Name</label>
+                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Activity Name</label>
                         <input
                             type="text"
                             value={activityName}
                             onChange={(e) => setActivityName(e.target.value)}
-                            placeholder="e.g. MERN Coding, Morning Run"
-                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                            placeholder="What did you achieve today?"
+                            className="w-full bg-[#0f172a] border border-[#1f2937] text-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-all placeholder:text-gray-600"
                             required
                         />
                     </div>
 
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium">Domain</label>
-                        <div className="flex gap-2">
+                    <div className="space-y-3">
+                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Domain</label>
+                        <div className="grid grid-cols-3 gap-2">
                             {categories.map((cat) => (
                                 <button
                                     key={cat.id}
                                     type="button"
                                     onClick={() => setSelectedCategory(cat.id)}
                                     className={cn(
-                                        "px-3 py-1.5 rounded-full text-xs font-semibold transition-all",
+                                        "px-2 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-tight transition-all duration-200 border",
                                         selectedCategory === cat.id
-                                            ? "ring-2 ring-primary ring-offset-2 bg-primary text-primary-foreground"
-                                            : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                                            ? "bg-green-500 border-green-400 text-[#0f172a]"
+                                            : "bg-[#0f172a] border-[#1f2937] text-gray-400 hover:border-gray-600 hover:text-gray-200"
                                     )}
                                 >
                                     {cat.name}
@@ -71,8 +73,8 @@ export function ActivityLogForm() {
                         </div>
                     </div>
 
-                    <Button type="submit" className="w-full" disabled={!selectedCategory || !activityName}>
-                        Log Activity
+                    <Button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-[#0f172a] font-bold py-6 rounded-xl transition-all shadow-lg shadow-green-500/10" disabled={!selectedCategory || !activityName}>
+                        Update My Progress
                     </Button>
                 </form>
             </CardContent>

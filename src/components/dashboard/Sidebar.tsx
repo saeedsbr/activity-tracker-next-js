@@ -27,14 +27,14 @@ export function Sidebar() {
     const pathname = usePathname()
 
     return (
-        <div className="w-64 bg-card border-r h-full flex flex-col">
-            <div className="p-6">
-                <h1 className="text-xl font-bold flex items-center gap-2">
-                    <Flame className="text-orange-500" />
-                    PerfTracker
+        <div className="w-64 bg-[#111827] border-r border-[#1f2937] h-full flex flex-col">
+            <div className="p-8">
+                <h1 className="text-xl font-bold flex items-center gap-2 text-white">
+                    <Flame className="text-green-500" fill="currentColor" size={24} />
+                    <span>PerfTracker</span>
                 </h1>
             </div>
-            <nav className="flex-1 px-4 space-y-2">
+            <nav className="flex-1 px-4 space-y-1">
                 {navItems.map((item) => {
                     const Icon = item.icon
                     const isActive = pathname === item.href
@@ -43,22 +43,22 @@ export function Sidebar() {
                             key={item.name}
                             href={item.href}
                             className={cn(
-                                "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                                "flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200",
                                 isActive
-                                    ? "bg-accent text-accent-foreground"
-                                    : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                                    ? "bg-green-500/10 text-green-500"
+                                    : "text-gray-400 hover:bg-gray-800/50 hover:text-gray-200"
                             )}
                         >
-                            <Icon size={18} />
+                            <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
                             {item.name}
                         </Link>
                     )
                 })}
             </nav>
-            <div className="p-4 border-t">
+            <div className="p-6 border-t border-[#1f2937]">
                 <Link
                     href="/settings"
-                    className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 transition-all duration-200"
                 >
                     <Settings size={18} />
                     Settings
