@@ -11,29 +11,13 @@
 [[1;34mINFO[m] Copying 0 resource from src/main/resources to target/classes
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mbackend[0;1m ---[m
-[[1;34mINFO[m] Recompiling the module because of [1mchanged source code[m.
-[[1;34mINFO[m] Compiling 22 source files with javac [debug parameters release 21] to target/classes
-[[1;34mINFO[m] Annotation processing is enabled because one or more processors were found
-  on the class path. A future release of javac may disable annotation processing
-  unless at least one processor is specified by name (-processor), or a search
-  path is specified (--processor-path, --processor-module-path), or annotation
-  processing is enabled explicitly (-proc:only, -proc:full).
-  Use -Xlint:-options to suppress this message.
-  Use -proc:none to disable annotation processing.
+[[1;34mINFO[m] Nothing to compile - all classes are up to date.
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mbackend[0;1m ---[m
 [[1;34mINFO[m] skip non existing resourceDirectory /media/talha/Data/development/activity tracker/activity tracker next js/backend/src/test/resources
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mbackend[0;1m ---[m
-[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
-[[1;34mINFO[m] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
-[[1;34mINFO[m] Annotation processing is enabled because one or more processors were found
-  on the class path. A future release of javac may disable annotation processing
-  unless at least one processor is specified by name (-processor), or a search
-  path is specified (--processor-path, --processor-module-path), or annotation
-  processing is enabled explicitly (-proc:only, -proc:full).
-  Use -Xlint:-options to suppress this message.
-  Use -proc:none to disable annotation processing.
+[[1;34mINFO[m] Nothing to compile - all classes are up to date.
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m<<< [0;32mspring-boot-maven-plugin:3.4.1:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mbackend[0;1m <<<[m
 [[1;34mINFO[m] 
@@ -50,23 +34,23 @@
 
  :: Spring Boot ::                (v3.4.1)
 
-2026-04-24T12:02:13.085+05:00  INFO 894769 --- [           main] c.t.backend.ActivityTrackerApplication   : Starting ActivityTrackerApplication using Java 21.0.2 with PID 894769 (/media/talha/Data/development/activity tracker/activity tracker next js/backend/target/classes started by talha in /media/talha/Data/development/activity tracker/activity tracker next js/backend)
-2026-04-24T12:02:13.086+05:00  INFO 894769 --- [           main] c.t.backend.ActivityTrackerApplication   : No active profile set, falling back to 1 default profile: "default"
-2026-04-24T12:02:13.404+05:00  INFO 894769 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-04-24T12:02:13.431+05:00  INFO 894769 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 3 JPA repository interfaces.
-2026-04-24T12:02:13.668+05:00  INFO 894769 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-04-24T12:02:13.675+05:00  INFO 894769 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-24T12:02:13.675+05:00  INFO 894769 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
-2026-04-24T12:02:13.708+05:00  INFO 894769 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-24T12:02:13.709+05:00  INFO 894769 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 602 ms
-2026-04-24T12:02:13.790+05:00  INFO 894769 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-04-24T12:02:13.808+05:00  INFO 894769 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
-2026-04-24T12:02:13.820+05:00  INFO 894769 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-04-24T12:02:13.987+05:00  INFO 894769 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-04-24T12:02:14.002+05:00  INFO 894769 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-04-24T12:02:14.166+05:00  INFO 894769 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1f26b992
-2026-04-24T12:02:14.167+05:00  INFO 894769 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-04-24T12:02:14.204+05:00  INFO 894769 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-04-24T14:40:33.755+05:00  INFO 1176087 --- [           main] c.t.backend.ActivityTrackerApplication   : Starting ActivityTrackerApplication using Java 21.0.2 with PID 1176087 (/media/talha/Data/development/activity tracker/activity tracker next js/backend/target/classes started by talha in /media/talha/Data/development/activity tracker/activity tracker next js/backend)
+2026-04-24T14:40:33.756+05:00  INFO 1176087 --- [           main] c.t.backend.ActivityTrackerApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-24T14:40:34.084+05:00  INFO 1176087 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-24T14:40:34.113+05:00  INFO 1176087 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 3 JPA repository interfaces.
+2026-04-24T14:40:34.376+05:00  INFO 1176087 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-04-24T14:40:34.385+05:00  INFO 1176087 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-24T14:40:34.385+05:00  INFO 1176087 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2026-04-24T14:40:34.416+05:00  INFO 1176087 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-24T14:40:34.417+05:00  INFO 1176087 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 630 ms
+2026-04-24T14:40:34.477+05:00  INFO 1176087 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-24T14:40:34.499+05:00  INFO 1176087 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-04-24T14:40:34.513+05:00  INFO 1176087 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-24T14:40:34.641+05:00  INFO 1176087 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-24T14:40:34.655+05:00  INFO 1176087 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-24T14:40:34.816+05:00  INFO 1176087 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@640a8f93
+2026-04-24T14:40:34.817+05:00  INFO 1176087 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-24T14:40:34.851+05:00  INFO 1176087 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.45
@@ -74,19 +58,15 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-04-24T12:02:14.651+05:00  INFO 894769 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-04-24T12:02:14.689+05:00  INFO 894769 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-04-24T12:02:14.890+05:00  INFO 894769 --- [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2026-04-24T12:02:14.891+05:00  WARN 894769 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2026-04-24T12:02:14.901+05:00  WARN 894769 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-04-24T12:02:15.153+05:00  INFO 894769 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-04-24T12:02:15.158+05:00  INFO 894769 --- [           main] c.t.backend.ActivityTrackerApplication   : Started ActivityTrackerApplication in 2.252 seconds (process running for 2.405)
-2026-04-24T12:02:28.099+05:00  INFO 894769 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-24T12:02:28.100+05:00  INFO 894769 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-24T12:02:28.101+05:00  INFO 894769 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
-Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
-Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
-Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
+2026-04-24T14:40:35.267+05:00  INFO 1176087 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-24T14:40:35.307+05:00  INFO 1176087 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-24T14:40:35.499+05:00  INFO 1176087 --- [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-04-24T14:40:35.499+05:00  WARN 1176087 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-04-24T14:40:35.510+05:00  WARN 1176087 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-24T14:40:35.771+05:00  INFO 1176087 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-04-24T14:40:35.778+05:00  INFO 1176087 --- [           main] c.t.backend.ActivityTrackerApplication   : Started ActivityTrackerApplication in 2.205 seconds (process running for 2.342)
+2026-04-24T14:40:49.866+05:00  INFO 1176087 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-24T14:40:49.866+05:00  INFO 1176087 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-24T14:40:49.867+05:00  INFO 1176087 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
 Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
