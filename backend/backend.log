@@ -72,3 +72,8 @@ Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 
 Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
 Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
 Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
+2026-04-24T14:43:07.340+05:00  INFO 1176087 --- [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-24T14:43:07.346+05:00  INFO 1176087 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-04-24T14:43:07.354+05:00  INFO 1176087 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-24T14:43:07.357+05:00  INFO 1176087 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-24T14:43:07.366+05:00  INFO 1176087 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
