@@ -1,0 +1,102 @@
+
+> activity-tracker@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.18:3000
+✓ Ready in 616ms
+
+ GET /dashboard 200 in 1204ms (next.js: 658ms, application-code: 546ms)
+ GET /analytics 200 in 1218ms (next.js: 769ms, application-code: 449ms)
+⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from "127.0.0.1".
+Cross-origin access to Next.js dev resources is blocked by default for safety.
+
+To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
+
+// next.config.js
+module.exports = {
+  allowedDevOrigins: ['127.0.0.1'],
+}
+
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET /dashboard 200 in 34ms (next.js: 4ms, application-code: 30ms)
+ GET /analytics 200 in 66ms (next.js: 2ms, application-code: 63ms)
+ GET /dashboard 200 in 59ms (next.js: 3ms, application-code: 56ms)
+ GET /analytics 200 in 33ms (next.js: 2ms, application-code: 30ms)
+ GET / 200 in 40ms (next.js: 17ms, application-code: 23ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__varia..."
+-                         crxlauncher=""
+                        >
+                  ...
+ 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+ GET /dashboard 200 in 28ms (next.js: 4ms, application-code: 24ms)
+ GET /academics 200 in 36ms (next.js: 17ms, application-code: 18ms)
+ GET /business 200 in 33ms (next.js: 19ms, application-code: 14ms)
+ GET /dashboard 200 in 18ms (next.js: 2ms, application-code: 16ms)
+ GET /analytics 200 in 49ms (next.js: 2ms, application-code: 46ms)
+ GET /analytics 200 in 30ms (next.js: 1821µs, application-code: 29ms)
+ GET /analytics 200 in 31ms (next.js: 2ms, application-code: 29ms)
+ GET /analytics 200 in 30ms (next.js: 3ms, application-code: 28ms)
+ GET /analytics 200 in 44ms (next.js: 2ms, application-code: 41ms)
+ GET /analytics 200 in 33ms (next.js: 1903µs, application-code: 31ms)
+ GET /dashboard 200 in 43ms (next.js: 2ms, application-code: 41ms)
+ GET /business 200 in 35ms (next.js: 3ms, application-code: 32ms)
+ GET /dashboard 200 in 13ms (next.js: 2ms, application-code: 11ms)
+ GET /business 200 in 14ms (next.js: 3ms, application-code: 12ms)
+ GET /academics 200 in 16ms (next.js: 1474µs, application-code: 15ms)
+ GET /business 200 in 27ms (next.js: 4ms, application-code: 23ms)
+ GET /academics 200 in 11ms (next.js: 1736µs, application-code: 9ms)
+ GET /health 200 in 34ms (next.js: 18ms, application-code: 15ms)
+ GET /activities 200 in 45ms (next.js: 19ms, application-code: 26ms)
+ GET /analytics 200 in 16ms (next.js: 3ms, application-code: 13ms)
+ GET /health 200 in 18ms (next.js: 3ms, application-code: 15ms)
+ GET /analytics 200 in 18ms (next.js: 3ms, application-code: 15ms)
+ GET /activities 200 in 12ms (next.js: 3ms, application-code: 10ms)
+ GET /analytics 200 in 11ms (next.js: 1892µs, application-code: 9ms)
+ GET /activities 200 in 12ms (next.js: 2ms, application-code: 10ms)
+ GET /analytics 200 in 42ms (next.js: 2ms, application-code: 40ms)
