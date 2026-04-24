@@ -69,3 +69,9 @@ https://react.dev/link/hydration-mismatch
  GET /analytics 200 in 18ms (next.js: 2ms, application-code: 16ms)
  GET /activities 200 in 20ms (next.js: 3ms, application-code: 17ms)
  GET /dashboard 200 in 13ms (next.js: 3ms, application-code: 10ms)
+✓ Compiled in 292ms
+⚠ Fast Refresh had to perform a full reload when ./src/lib/api.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload when ./src/lib/api.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+✓ Compiled in 40ms
+ GET /dashboard 200 in 51ms (next.js: 2ms, application-code: 49ms)
+ GET /dashboard 200 in 52ms (next.js: 21ms, application-code: 31ms)

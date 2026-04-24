@@ -108,7 +108,7 @@ export default function DashboardPage() {
                                     </div>
                                 ))}
                             </div>
-                        ) : !isLoading ? (
+                        ) : (!isLoading && !isError) ? (
                             <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-3 flex items-center gap-3">
                                 <CheckCircle2 size={16} className="text-green-600 shrink-0" />
                                 <p className="text-xs text-green-700 font-medium">You're on track! All categories logged today. 🎉</p>
@@ -124,8 +124,8 @@ export default function DashboardPage() {
                                 <form onSubmit={handleLog} className="space-y-4">
                                     {logMessage && (
                                         <div className={`flex items-center gap-2 px-3 py-2.5 rounded-lg text-xs font-medium ${logMessage.type === 'success'
-                                                ? 'bg-green-50 border border-green-200 text-green-700'
-                                                : 'bg-red-50 border border-red-200 text-red-700'
+                                            ? 'bg-green-50 border border-green-200 text-green-700'
+                                            : 'bg-red-50 border border-red-200 text-red-700'
                                             }`}>
                                             {logMessage.text}
                                         </div>
@@ -150,8 +150,8 @@ export default function DashboardPage() {
                                                     type="button"
                                                     onClick={() => setSelectedCategoryId(cat.id)}
                                                     className={`py-2 rounded-lg text-xs font-semibold border transition-all ${selectedCategoryId === cat.id
-                                                            ? 'bg-green-600 border-green-600 text-white'
-                                                            : 'border-slate-200 text-slate-600 hover:border-green-400 hover:text-green-700 hover:bg-green-50'
+                                                        ? 'bg-green-600 border-green-600 text-white'
+                                                        : 'border-slate-200 text-slate-600 hover:border-green-400 hover:text-green-700 hover:bg-green-50'
                                                         }`}
                                                 >
                                                     {cat.name}
