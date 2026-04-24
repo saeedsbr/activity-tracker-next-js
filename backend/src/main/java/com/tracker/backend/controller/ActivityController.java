@@ -27,6 +27,11 @@ public class ActivityController {
     @Autowired
     ActivityLogRepository activityLogRepository;
 
+    @GetMapping("/categories")
+    public ResponseEntity<?> getCategories() {
+        return ResponseEntity.ok(categoryRepository.findAll());
+    }
+
     @GetMapping("/summary")
     public ResponseEntity<?> getSummary() {
         User user = getCurrentUser();
@@ -45,9 +50,9 @@ public class ActivityController {
         Category category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Error: Category not found."));
 
-        if (activityLogRepository.existsByUserAndCategoryAndLogDate(user, category, LocalDate.now())) {
+        if (activityLogRepository.existsByUserAndActivityNameAndLogDate(user, request.getActivityName(), LocalDate.now())) {
             return ResponseEntity.badRequest()
-                    .body(new MessageResponse("Error: Activity already logged for this category today."));
+                    .body(new MessageResponse("Error: This activity is already logged for today."));
         }
 
         ActivityLog log = ActivityLog.builder()

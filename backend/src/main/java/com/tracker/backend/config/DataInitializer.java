@@ -11,10 +11,14 @@ public class DataInitializer {
     @Bean
     CommandLineRunner init(CategoryRepository categoryRepository) {
         return args -> {
-            if (categoryRepository.count() == 0) {
-                categoryRepository.save(new Category(null, "Academics"));
-                categoryRepository.save(new Category(null, "Business"));
-                categoryRepository.save(new Category(null, "Health"));
+            String[] defaultCategories = {
+                    "Academics", "Business", "Health",
+                    "Religion", "Finance", "Social", "Creativity", "Personal Development"
+            };
+            for (String name : defaultCategories) {
+                if (!categoryRepository.existsByName(name)) {
+                    categoryRepository.save(new Category(null, name));
+                }
             }
         };
     }

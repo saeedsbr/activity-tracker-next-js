@@ -13,4 +13,9 @@ public interface ActivityLogRepository extends JpaRepository<ActivityLog, Long> 
     List<ActivityLog> findByUserAndCategoryOrderByLogDateDesc(User user, Category category);
 
     boolean existsByUserAndCategoryAndLogDate(User user, Category category, LocalDate logDate);
+
+    boolean existsByUserAndActivityNameAndLogDate(User user, String activityName, LocalDate logDate);
+
+    List<ActivityLog> findByUserAndCategoryAndActivityNameAndLogDateBetween(
+            User user, Category category, String activityName, LocalDate startDate, LocalDate endDate);
 }

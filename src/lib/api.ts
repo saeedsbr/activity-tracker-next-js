@@ -26,10 +26,15 @@ api.interceptors.response.use(
             code: error.code,
             data: error.response?.data
         })
-        if (error.response?.status === 401 && typeof window !== 'undefined') {
-            localStorage.removeItem('token')
-            localStorage.removeItem('user')
-            window.location.href = '/login'
+        const status = error.response?.status
+        if ((status === 401 || status === 403) && typeof window !== 'undefined') {
+            // Don't redirect for auth endpoints (login/register may return 401 for bad credentials)
+            const url = error.config?.url || ''
+            if (!url.includes('/auth/')) {
+                localStorage.removeItem('token')
+                localStorage.removeItem('user')
+                window.location.href = '/login'
+            }
         }
         return Promise.reject(error)
     }

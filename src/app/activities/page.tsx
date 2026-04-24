@@ -3,10 +3,12 @@
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import AppLayout from "@/components/layout/AppLayout"
-import { History, BookOpen, Briefcase, Activity, Clock, Search, Loader2, AlertCircle } from "lucide-react"
+import { History, Search, Loader2, AlertCircle } from "lucide-react"
 import { useQuery } from "@tanstack/react-query"
 import api from "@/lib/api"
 import { useActivitySummary } from "@/hooks/useActivitySummary"
+import { useCategories } from "@/hooks/useCategories"
+import { getCategoryStyle } from "@/lib/categoryConfig"
 
 interface ActivityLog {
     id: number
@@ -16,12 +18,6 @@ interface ActivityLog {
         name: string
     }
     logDate: string
-}
-
-const categoryConfig: Record<string, { icon: any; color: string; bg: string }> = {
-    Business: { icon: Briefcase, color: 'text-violet-600', bg: 'bg-violet-50' },
-    Health: { icon: Activity, color: 'text-green-600', bg: 'bg-green-50' },
-    Academics: { icon: BookOpen, color: 'text-blue-600', bg: 'bg-blue-50' },
 }
 
 export default function ActivitiesPage() {
@@ -34,6 +30,7 @@ export default function ActivitiesPage() {
     })
 
     const { data: summary, isLoading: summaryLoading } = useActivitySummary()
+    const { data: categories } = useCategories()
 
     const filteredActivities = activities?.filter(a => {
         const matchesSearch = a.activityName.toLowerCase().includes(search.toLowerCase())
@@ -43,6 +40,7 @@ export default function ActivitiesPage() {
 
     const totalActivities = summary?.heatmap.reduce((sum, d) => sum + d.count, 0) ?? 0
     const activeDays = summary?.heatmap.filter(d => d.count > 0).length ?? 0
+    const totalCategories = categories?.length ?? 0
 
     return (
         <AppLayout>
@@ -71,7 +69,7 @@ export default function ActivitiesPage() {
                 <div className="grid grid-cols-3 gap-4">
                     {[
                         { label: 'Total Activities', value: summaryLoading ? '...' : String(totalActivities), sub: 'All time' },
-                        { label: 'Total Categories', value: '3', sub: 'Active goals' },
+                        { label: 'Total Categories', value: String(totalCategories), sub: 'Active goals' },
                         { label: 'Active Days', value: summaryLoading ? '...' : String(activeDays), sub: 'Consistency' },
                     ].map((s) => (
                         <Card key={s.label} className="border border-slate-200 shadow-sm rounded-2xl">
@@ -96,11 +94,11 @@ export default function ActivitiesPage() {
                             className="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-200 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-green-500/30 placeholder:text-slate-400"
                         />
                     </div>
-                    {['All', 'Academics', 'Business', 'Health'].map((f) => (
+                    {['All', ...(categories ?? []).map(c => c.name)].map((f) => (
                         <button
                             key={f}
                             onClick={() => setFilter(f)}
-                            className={`px-4 py-2.5 rounded-lg text-sm font-medium border transition-colors ${filter === f ? 'bg-green-600 text-white border-green-600' : 'bg-white border-slate-200 text-slate-600 hover:border-green-400 hover:text-green-700'}`}
+                            className={`px-3 py-2.5 rounded-lg text-xs font-medium border transition-colors ${filter === f ? 'bg-green-600 text-white border-green-600' : 'bg-white border-slate-200 text-slate-600 hover:border-green-400 hover:text-green-700'}`}
                         >
                             {f}
                         </button>
@@ -117,7 +115,7 @@ export default function ActivitiesPage() {
                     ) : filteredActivities.length > 0 ? (
                         <ul className="divide-y divide-slate-100">
                             {filteredActivities.map((a) => {
-                                const cfg = categoryConfig[a.category.name] || { icon: History, color: 'text-slate-600', bg: 'bg-slate-50' }
+                                const cfg = getCategoryStyle(a.category.name)
                                 const Icon = cfg.icon
                                 return (
                                     <li key={a.id} className="flex items-center justify-between px-6 py-4 hover:bg-slate-50 transition-colors">

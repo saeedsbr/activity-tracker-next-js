@@ -3,15 +3,15 @@ package com.tracker.backend.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "activity_logs")
+@Table(name = "routine_plan_items")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ActivityLog {
+public class RoutinePlanItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,5 +29,13 @@ public class ActivityLog {
     private String activityName;
 
     @Column(nullable = false)
-    private LocalDate logDate;
+    private boolean isActive;
+
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        isActive = true;
+    }
 }

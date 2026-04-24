@@ -52,12 +52,12 @@ export default function LoginPage() {
                                 </div>
                             )}
                             <div className="space-y-1.5">
-                                <label className="text-xs font-semibold text-slate-500 uppercase tracking-widest">Username</label>
+                                <label className="text-xs font-semibold text-slate-500 uppercase tracking-widest">Username or Email</label>
                                 <input
                                     type="text"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
-                                    placeholder="johndoe"
+                                    placeholder="johndoe or john@example.com"
                                     className="w-full bg-slate-50 border border-slate-200 text-slate-800 px-4 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500/40 placeholder:text-slate-400"
                                     required
                                 />

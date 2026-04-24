@@ -75,3 +75,727 @@ https://react.dev/link/hydration-mismatch
 ✓ Compiled in 40ms
  GET /dashboard 200 in 51ms (next.js: 2ms, application-code: 49ms)
  GET /dashboard 200 in 52ms (next.js: 21ms, application-code: 31ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/dashboard" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__varia..."
+-                         crxlauncher=""
+                        >
+                  ...
+ 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'get'[39m,
+  status: [33m403[39m,
+  url: [32m'/activities/summary'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async fetchSummary (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0jwh9_7._.js:412:17) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'get'[39m,
+  status: [33m403[39m,
+  url: [32m'/activities/summary'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async fetchSummary (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0jwh9_7._.js:412:17) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /dashboard 200 in 26ms (next.js: 2ms, application-code: 24ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/dashboard" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__varia..."
+-                         crxlauncher=""
+                        >
+                  ...
+ 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'get'[39m,
+  status: [33m403[39m,
+  url: [32m'/activities/summary'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async fetchSummary (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0jwh9_7._.js:412:17) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /academics 200 in 13ms (next.js: 3ms, application-code: 11ms)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'get'[39m,
+  status: [33m403[39m,
+  url: [32m'/activities/summary'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async fetchSummary (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0jwh9_7._.js:412:17) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /academics 200 in 43ms (next.js: 2ms, application-code: 40ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/academics" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__varia..."
+-                         crxlauncher=""
+                        >
+                  ...
+ 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'get'[39m,
+  status: [33m403[39m,
+  url: [32m'/activities/summary'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async fetchSummary (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0q9l8ty._.js:412:17) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /dashboard 200 in 37ms (next.js: 3ms, application-code: 34ms)
+ GET /dashboard 200 in 27ms (next.js: 1427µs, application-code: 25ms)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'get'[39m,
+  status: [33m403[39m,
+  url: [32m'/activities/summary'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async fetchSummary (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0q9l8ty._.js:412:17) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /academics 200 in 28ms (next.js: 1471µs, application-code: 27ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/academics" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__varia..."
+-                         crxlauncher=""
+                        >
+                  ...
+ 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'get'[39m,
+  status: [33m403[39m,
+  url: [32m'/activities/summary'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async fetchSummary (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0q9l8ty._.js:412:17) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /dashboard 200 in 16ms (next.js: 3ms, application-code: 14ms)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'get'[39m,
+  status: [33m403[39m,
+  url: [32m'/activities/summary'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async fetchSummary (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0q9l8ty._.js:412:17) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+⚠ Fast Refresh had to perform a full reload when ./src/lib/api.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload when ./src/lib/api.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+✓ Compiled in 40ms
+ GET /dashboard 200 in 49ms (next.js: 6ms, application-code: 43ms)
+ GET /dashboard 200 in 55ms (next.js: 3ms, application-code: 53ms)
+ GET /dashboard 200 in 58ms (next.js: 22ms, application-code: 36ms)
+ GET /login 200 in 87ms (next.js: 19ms, application-code: 68ms)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'post'[39m,
+  status: [33m403[39m,
+  url: [32m'/auth/login'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async login (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:90:25)
+    at async handleSubmit (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_01_0zuh._.js:230:13) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /register 200 in 37ms (next.js: 17ms, application-code: 19ms)
+ GET /login 200 in 15ms (next.js: 3ms, application-code: 13ms)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'post'[39m,
+  status: [33m403[39m,
+  url: [32m'/auth/login'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async login (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:90:25)
+    at async handleSubmit (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_01_0zuh._.js:230:13) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /register 200 in 18ms (next.js: 1805µs, application-code: 16ms)
+ GET /login 200 in 18ms (next.js: 2ms, application-code: 16ms)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'post'[39m,
+  status: [33m403[39m,
+  url: [32m'/auth/login'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async login (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:90:25)
+    at async handleSubmit (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_01_0zuh._.js:230:13) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /register 200 in 12ms (next.js: 1640µs, application-code: 11ms)
+ GET /login 200 in 19ms (next.js: 2ms, application-code: 17ms)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'post'[39m,
+  status: [33m403[39m,
+  url: [32m'/auth/login'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async login (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:90:25)
+    at async handleSubmit (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_01_0zuh._.js:230:13) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'post'[39m,
+  status: [33m403[39m,
+  url: [32m'/auth/login'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async login (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:90:25)
+    at async handleSubmit (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_01_0zuh._.js:230:13) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+✓ Compiled in 30ms
+ GET /login 200 in 27ms (next.js: 3ms, application-code: 23ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__varia..."
+-                         crxlauncher=""
+                        >
+                  ...
+ 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+ GET /register 200 in 18ms (next.js: 2ms, application-code: 16ms)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: { message: [32m'Error: Username is already taken!'[39m },
+  message: [32m'Request failed with status code 400'[39m,
+  method: [32m'post'[39m,
+  status: [33m400[39m,
+  url: [32m'/auth/register'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async register (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:116:13)
+    at async handleSubmit (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0qxxtql._.js:231:13) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /login 200 in 13ms (next.js: 1781µs, application-code: 12ms)
+[browser] API Error: {
+  code: [32m'ERR_BAD_REQUEST'[39m,
+  data: [32m''[39m,
+  message: [32m'Request failed with status code 403'[39m,
+  method: [32m'post'[39m,
+  status: [33m403[39m,
+  url: [32m'/auth/login'[39m
+} 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+    at async Axios.request (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_0uq8sq4._.js:5134:20)
+    at async login (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:90:25)
+    at async handleSubmit (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_01_0zuh._.js:230:13) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/src_0-2-thz._.js:26:13)
+ GET /dashboard 200 in 12ms (next.js: 1380µs, application-code: 11ms)
+ GET /business 200 in 15ms (next.js: 3ms, application-code: 12ms)
+ GET /analytics 200 in 13ms (next.js: 3ms, application-code: 10ms)
+ GET /dashboard 200 in 17ms (next.js: 1925µs, application-code: 16ms)
+ GET /academics 200 in 11ms (next.js: 1934µs, application-code: 9ms)
+ GET /business 200 in 17ms (next.js: 1926µs, application-code: 15ms)
+ GET /activities 200 in 13ms (next.js: 1908µs, application-code: 11ms)
+ GET /analytics 200 in 17ms (next.js: 1892µs, application-code: 15ms)
+ GET /academics 200 in 15ms (next.js: 2ms, application-code: 13ms)
+ GET /health 200 in 13ms (next.js: 3ms, application-code: 10ms)
+ GET /activities 200 in 17ms (next.js: 1912µs, application-code: 15ms)
+ GET /analytics 200 in 17ms (next.js: 1933µs, application-code: 15ms)
+ GET /activities 200 in 18ms (next.js: 1712µs, application-code: 16ms)
+ GET /dashboard 200 in 16ms (next.js: 1939µs, application-code: 14ms)
+ GET /dashboard 200 in 27ms (next.js: 2ms, application-code: 25ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/dashboard" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__varia..."
+-                         crxlauncher=""
+                        >
+                  ...
+ 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+✓ Compiled in 73ms
+ GET /dashboard 200 in 108ms (next.js: 58ms, application-code: 50ms)
+ GET /dashboard 200 in 15ms (next.js: 1427µs, application-code: 14ms)
+ GET /dashboard 200 in 120ms (next.js: 66ms, application-code: 53ms)
+ GET /dashboard 200 in 16ms (next.js: 1458µs, application-code: 15ms)
+ GET /dashboard 200 in 135ms (next.js: 70ms, application-code: 65ms)
+ GET /dashboard 200 in 38ms (next.js: 1949µs, application-code: 36ms)
+ GET /dashboard 200 in 16ms (next.js: 1951µs, application-code: 14ms)
+ GET /dashboard 200 in 121ms (next.js: 3ms, application-code: 119ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/dashboard" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__varia..."
+-                         crxlauncher=""
+                        >
+                  ...
+ 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+ GET /activities 200 in 22ms (next.js: 10ms, application-code: 11ms)
+✓ Compiled in 0ms
+ GET /activities 200 in 219ms (next.js: 114ms, application-code: 106ms)
+ GET /activities 200 in 77ms (next.js: 1823µs, application-code: 75ms)
+ GET /activities 200 in 56ms (next.js: 2ms, application-code: 54ms)
+ GET /activities 200 in 45ms (next.js: 2ms, application-code: 43ms)
+ GET /activities 200 in 45ms (next.js: 2ms, application-code: 42ms)
+ GET /activities 200 in 42ms (next.js: 1537µs, application-code: 40ms)
+ GET /activities 200 in 44ms (next.js: 1250µs, application-code: 42ms)
+ GET /activities 200 in 41ms (next.js: 2ms, application-code: 39ms)
+ GET /activities 200 in 40ms (next.js: 1611µs, application-code: 39ms)
+ GET /activities 200 in 37ms (next.js: 1844µs, application-code: 35ms)
+ GET /activities 200 in 50ms (next.js: 1616µs, application-code: 49ms)
+ GET /activities 200 in 52ms (next.js: 1814µs, application-code: 50ms)
+ GET /activities 200 in 52ms (next.js: 1699µs, application-code: 50ms)
+ GET /activities 200 in 54ms (next.js: 1322µs, application-code: 53ms)
+ GET /activities 200 in 57ms (next.js: 1321µs, application-code: 56ms)
+ GET /activities 200 in 57ms (next.js: 1178µs, application-code: 56ms)
+ GET /activities 200 in 59ms (next.js: 1384µs, application-code: 57ms)
+ GET /activities 200 in 46ms (next.js: 1496µs, application-code: 44ms)
+ GET /activities 200 in 41ms (next.js: 1390µs, application-code: 40ms)
+ GET /activities 200 in 44ms (next.js: 1348µs, application-code: 43ms)
+ GET /activities 200 in 43ms (next.js: 1924µs, application-code: 42ms)
+ GET /activities 200 in 41ms (next.js: 1782µs, application-code: 40ms)
+ GET /activities 200 in 27ms (next.js: 3ms, application-code: 24ms)
+ GET /activities 200 in 14ms (next.js: 1681µs, application-code: 12ms)
+ GET /dashboard 200 in 23ms (next.js: 9ms, application-code: 14ms)
+ GET /academics 200 in 20ms (next.js: 8ms, application-code: 13ms)
+ GET /health 200 in 22ms (next.js: 10ms, application-code: 12ms)
+ GET /analytics 200 in 18ms (next.js: 7ms, application-code: 11ms)
+ GET /dashboard 200 in 12ms (next.js: 1968µs, application-code: 10ms)
+✓ Compiled in 198ms
+ GET /dashboard 200 in 128ms (next.js: 58ms, application-code: 69ms)
+ GET /dashboard 200 in 59ms (next.js: 1836µs, application-code: 57ms)
+ GET /dashboard 200 in 55ms (next.js: 1514µs, application-code: 54ms)
+ GET /dashboard 200 in 37ms (next.js: 1274µs, application-code: 36ms)
+ GET /dashboard 200 in 40ms (next.js: 1166µs, application-code: 39ms)
+ GET /dashboard 200 in 42ms (next.js: 1479µs, application-code: 40ms)
+ GET /dashboard 200 in 44ms (next.js: 1603µs, application-code: 42ms)
+ GET /dashboard 200 in 67ms (next.js: 1691µs, application-code: 66ms)
+ GET /dashboard 200 in 58ms (next.js: 1381µs, application-code: 57ms)
+ GET /dashboard 200 in 67ms (next.js: 2ms, application-code: 65ms)
+ GET /dashboard 200 in 60ms (next.js: 4ms, application-code: 56ms)
+ GET /dashboard 200 in 98ms (next.js: 4ms, application-code: 94ms)
+ GET /dashboard 200 in 90ms (next.js: 2ms, application-code: 88ms)
+ GET /dashboard 200 in 132ms (next.js: 3ms, application-code: 129ms)
+ GET /dashboard 200 in 108ms (next.js: 3ms, application-code: 105ms)
+ GET /dashboard 200 in 58ms (next.js: 9ms, application-code: 49ms)
+✓ Compiled in 24ms
+✓ Compiled in 63ms
+ GET /dashboard 200 in 313ms (next.js: 86ms, application-code: 228ms)
+ GET /dashboard 200 in 41ms (next.js: 3ms, application-code: 38ms)
+ GET /login 200 in 185ms (next.js: 16ms, application-code: 169ms)
+ GET /dashboard 200 in 20ms (next.js: 3ms, application-code: 17ms)
+✓ Compiled in 47ms
+ GET /dashboard 200 in 17ms (next.js: 4ms, application-code: 13ms)
+ GET /business 200 in 20ms (next.js: 8ms, application-code: 12ms)
+ GET /academics 200 in 19ms (next.js: 8ms, application-code: 11ms)
+ GET /health 200 in 22ms (next.js: 9ms, application-code: 13ms)
+ GET /routine 200 in 413ms (next.js: 397ms, application-code: 15ms)
+ GET /routine 200 in 15ms (next.js: 1907µs, application-code: 13ms)
+ GET /routine 200 in 14ms (next.js: 1981µs, application-code: 12ms)
+ GET /health 200 in 12ms (next.js: 1562µs, application-code: 10ms)
+ GET /routine 200 in 14ms (next.js: 1215µs, application-code: 12ms)
+ GET /dashboard 200 in 20ms (next.js: 3ms, application-code: 17ms)
+ GET /academics 200 in 18ms (next.js: 1576µs, application-code: 16ms)
+ GET /dashboard 200 in 19ms (next.js: 2ms, application-code: 17ms)
+✓ Compiled in 62ms
+✓ Compiled in 110ms
+ GET /dashboard 200 in 318ms (next.js: 73ms, application-code: 245ms)
+ GET /dashboard 200 in 190ms (next.js: 136ms, application-code: 54ms)
+ GET /login 200 in 193ms (next.js: 13ms, application-code: 181ms)
+ GET /dashboard 200 in 29ms (next.js: 2ms, application-code: 27ms)
+ GET /login 200 in 172ms (next.js: 69ms, application-code: 103ms)
+ GET /login 200 in 71ms (next.js: 1581µs, application-code: 69ms)
+ GET /login 200 in 54ms (next.js: 3ms, application-code: 51ms)
+ GET /login 200 in 126ms (next.js: 62ms, application-code: 64ms)
+ GET /login 200 in 19ms (next.js: 2ms, application-code: 16ms)
+ GET /login 200 in 129ms (next.js: 67ms, application-code: 62ms)
+ GET /login 200 in 37ms (next.js: 1512µs, application-code: 36ms)
+ GET /login 200 in 15ms (next.js: 1704µs, application-code: 13ms)
+ GET /login 200 in 288ms (next.js: 100ms, application-code: 189ms)
+ GET /login 200 in 64ms (next.js: 4ms, application-code: 59ms)
+ GET /login 200 in 146ms (next.js: 71ms, application-code: 75ms)
+ GET /login 200 in 46ms (next.js: 1719µs, application-code: 44ms)
+ GET /login 200 in 20ms (next.js: 2ms, application-code: 18ms)
+ GET /login 200 in 113ms (next.js: 2ms, application-code: 110ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__varia..."
+-                         crxlauncher=""
+                        >
+                  ...
+ 
+    at <unknown> (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopSync (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9449:40)
+    at renderRootSync (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9433:13)
+    at performWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:186)
+    at performSyncWorkOnRoot (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10263:9)
+    at flushSyncWorkAcrossRoots_impl (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10179:316)
+    at dispatchEvent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:13021:174)
+    at dispatchDiscreteEvent (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:12984:64) (file:///media/talha/Data/development/activity tracker/activity tracker next js/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+ GET /dashboard 200 in 22ms (next.js: 11ms, application-code: 11ms)
+ GET /academics 200 in 26ms (next.js: 11ms, application-code: 15ms)
+ GET /business 200 in 22ms (next.js: 10ms, application-code: 12ms)
+ GET /health 200 in 24ms (next.js: 12ms, application-code: 12ms)
+ GET /routine 200 in 28ms (next.js: 12ms, application-code: 16ms)
+ GET /academics 200 in 13ms (next.js: 1531µs, application-code: 11ms)
+ GET /dashboard 200 in 14ms (next.js: 1653µs, application-code: 12ms)
+ GET /business 200 in 16ms (next.js: 2ms, application-code: 14ms)
+ GET /health 200 in 17ms (next.js: 1768µs, application-code: 15ms)
+ GET /routine 200 in 17ms (next.js: 1761µs, application-code: 16ms)
+ GET /activities 200 in 22ms (next.js: 9ms, application-code: 13ms)
+ GET /analytics 200 in 21ms (next.js: 10ms, application-code: 11ms)
+ GET /analytics 200 in 13ms (next.js: 1897µs, application-code: 11ms)
+ GET /routine 200 in 13ms (next.js: 1913µs, application-code: 11ms)
+ GET /health 200 in 10ms (next.js: 1360µs, application-code: 9ms)
+ GET /business 200 in 19ms (next.js: 1707µs, application-code: 18ms)
+ GET /business 200 in 10ms (next.js: 1800µs, application-code: 8ms)
+ GET /academics 200 in 13ms (next.js: 1712µs, application-code: 11ms)
+ GET /academics 200 in 13ms (next.js: 2ms, application-code: 11ms)
+ GET /business 200 in 9ms (next.js: 1166µs, application-code: 7ms)
+ GET /routine 200 in 10ms (next.js: 1446µs, application-code: 9ms)
+ GET /activities 200 in 18ms (next.js: 2ms, application-code: 16ms)
+ GET /analytics 200 in 9ms (next.js: 1212µs, application-code: 7ms)

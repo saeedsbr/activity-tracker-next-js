@@ -1,13 +1,16 @@
 'use client'
 
+import { useState } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import AppLayout from "@/components/layout/AppLayout"
 import { BookOpen, Flame, CheckCircle2, Clock, PlusCircle, Loader2, AlertCircle } from "lucide-react"
 import { useActivitySummary } from "@/hooks/useActivitySummary"
+import { CategoryLogForm } from "@/components/activities/CategoryLogForm"
 
 export default function AcademicsPage() {
     const { data: summary, isLoading, isError } = useActivitySummary()
     const streak = summary?.streaks.find(s => s.category === 'Academics')
+    const [showLogForm, setShowLogForm] = useState(false)
 
     return (
         <AppLayout>
@@ -22,11 +25,15 @@ export default function AcademicsPage() {
                             <p className="text-slate-500 text-sm">Track your study sessions and learning goals</p>
                         </div>
                     </div>
-                    <button className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                    <button onClick={() => setShowLogForm(!showLogForm)} className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
                         <PlusCircle size={16} />
                         Log Activity
                     </button>
                 </div>
+
+                {showLogForm && (
+                    <CategoryLogForm categoryId={1} categoryName="Academics" onClose={() => setShowLogForm(false)} />
+                )}
 
                 {isError && (
                     <div className="flex items-center gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">

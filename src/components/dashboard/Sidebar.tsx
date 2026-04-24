@@ -8,6 +8,7 @@ import {
     BookOpen,
     Briefcase,
     Activity,
+    CalendarCheck,
     History,
     BarChart3,
     Settings,
@@ -19,6 +20,7 @@ const navItems = [
     { name: 'Academics', href: '/academics', icon: BookOpen },
     { name: 'Business', href: '/business', icon: Briefcase },
     { name: 'Health', href: '/health', icon: Activity },
+    { name: 'Routine', href: '/routine', icon: CalendarCheck },
     { name: 'Activities', href: '/activities', icon: History },
     { name: 'Analytics', href: '/analytics', icon: BarChart3 },
 ]
