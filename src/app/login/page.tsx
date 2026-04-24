@@ -5,7 +5,6 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Button } from "@/components/ui/button"
 import { useAuth } from '@/context/AuthContext'
 import Link from 'next/link'
-import { motion } from "framer-motion"
 import { Flame } from "lucide-react"
 
 export default function LoginPage() {
@@ -19,60 +18,59 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#0f172a] p-4 font-sans">
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-            >
-                <Card className="w-full max-w-md bg-[#111827] border-[#1f2937] rounded-2xl shadow-2xl overflow-hidden">
-                    <CardHeader className="space-y-4 pt-10 text-center">
-                        <div className="flex justify-center">
-                            <div className="h-12 w-12 rounded-2xl bg-green-500/10 flex items-center justify-center text-green-500 shadow-lg shadow-green-500/10">
-                                <Flame fill="currentColor" size={28} />
-                            </div>
-                        </div>
-                        <div className="space-y-1">
-                            <CardTitle className="text-2xl font-bold text-white tracking-tight">Welcome Back</CardTitle>
-                            <CardDescription className="text-gray-400">Enter your credentials to access your streak</CardDescription>
-                        </div>
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4 font-sans">
+            <div className="w-full max-w-md">
+                {/* Logo */}
+                <div className="flex flex-col items-center mb-8">
+                    <div className="h-12 w-12 rounded-2xl bg-green-600 flex items-center justify-center shadow-lg shadow-green-500/20 mb-3">
+                        <Flame fill="currentColor" size={26} className="text-white" />
+                    </div>
+                    <h1 className="text-2xl font-bold text-slate-900 tracking-tight">PerfTracker</h1>
+                    <p className="text-slate-500 text-sm mt-1">Build unstoppable habits.</p>
+                </div>
+
+                <Card className="border border-slate-200 shadow-sm rounded-2xl">
+                    <CardHeader className="px-8 pt-8 pb-2">
+                        <CardTitle className="text-xl font-bold text-slate-900">Welcome back</CardTitle>
+                        <CardDescription className="text-slate-500">Sign in to continue your streak</CardDescription>
                     </CardHeader>
                     <form onSubmit={handleSubmit}>
-                        <CardContent className="space-y-6 px-10">
-                            <div className="space-y-2">
-                                <label className="text-xs font-semibold text-gray-400 uppercase tracking-widest px-1">Email</label>
+                        <CardContent className="space-y-4 px-8 py-6">
+                            <div className="space-y-1.5">
+                                <label className="text-xs font-semibold text-slate-500 uppercase tracking-widest">Email</label>
                                 <input
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="name@example.com"
-                                    className="w-full bg-[#0f172a] border border-[#1f2937] text-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-all placeholder:text-gray-600"
+                                    className="w-full bg-slate-50 border border-slate-200 text-slate-800 px-4 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500/40 placeholder:text-slate-400"
                                     required
                                 />
                             </div>
-                            <div className="space-y-2">
-                                <label className="text-xs font-semibold text-gray-400 uppercase tracking-widest px-1">Password</label>
+                            <div className="space-y-1.5">
+                                <label className="text-xs font-semibold text-slate-500 uppercase tracking-widest">Password</label>
                                 <input
                                     type="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full bg-[#0f172a] border border-[#1f2937] text-gray-200 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-all"
+                                    placeholder="Enter your password"
+                                    className="w-full bg-slate-50 border border-slate-200 text-slate-800 px-4 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500/40 placeholder:text-slate-400"
                                     required
                                 />
                             </div>
                         </CardContent>
-                        <CardFooter className="flex flex-col space-y-6 p-10 pt-4">
-                            <Button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-[#0f172a] font-bold py-6 rounded-xl transition-all shadow-lg shadow-green-500/10">
+                        <CardFooter className="flex flex-col gap-4 px-8 pb-8 pt-0">
+                            <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 rounded-lg transition-colors">
                                 Sign In
                             </Button>
-                            <p className="text-sm text-center text-gray-500">
+                            <p className="text-sm text-center text-slate-500">
                                 New to PerfTracker?{' '}
-                                <Link href="/register" className="text-green-500 hover:text-green-400 font-semibold transition-colors">Create Account</Link>
+                                <Link href="/register" className="text-green-600 hover:text-green-700 font-semibold transition-colors">Create Account</Link>
                             </p>
                         </CardFooter>
                     </form>
                 </Card>
-            </motion.div>
+            </div>
         </div>
     )
 }

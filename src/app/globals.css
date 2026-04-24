@@ -2,26 +2,26 @@
 
 @layer base {
   :root {
-    --background: #0f172a;
-    --foreground: #e5e7eb;
-    --card: #111827;
-    --card-foreground: #e5e7eb;
-    --popover: #0f172a;
-    --popover-foreground: #e5e7eb;
-    --primary: #22c55e;
-    --primary-foreground: #0f172a;
-    --secondary: #1f2937;
-    --secondary-foreground: #e5e7eb;
-    --muted: #1f2937;
-    --muted-foreground: #9ca3af;
-    --accent: #1f2937;
-    --accent-foreground: #e5e7eb;
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
+    --primary: #16a34a;
+    --primary-foreground: #ffffff;
+    --secondary: #f1f5f9;
+    --secondary-foreground: #0f172a;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --accent: #f0fdf4;
+    --accent-foreground: #16a34a;
     --destructive: #ef4444;
-    --destructive-foreground: #e5e7eb;
-    --border: #1f2937;
-    --input: #1f2937;
-    --ring: #22c55e;
-    --radius: 1rem;
+    --destructive-foreground: #ffffff;
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #16a34a;
+    --radius: 0.75rem;
   }
 }
 
@@ -37,7 +37,7 @@
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --radius-xl: 1rem;
+  --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
 }
 
@@ -53,5 +53,5 @@ body {
   background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
 }

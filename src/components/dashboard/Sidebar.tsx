@@ -9,8 +9,8 @@ import {
     Briefcase,
     Activity,
     History,
+    BarChart3,
     Settings,
-    AlertTriangle,
     Flame
 } from 'lucide-react'
 
@@ -20,21 +20,23 @@ const navItems = [
     { name: 'Business', href: '/business', icon: Briefcase },
     { name: 'Health', href: '/health', icon: Activity },
     { name: 'Activities', href: '/activities', icon: History },
-    { name: 'Analytics', href: '/analytics', icon: Flame },
+    { name: 'Analytics', href: '/analytics', icon: BarChart3 },
 ]
 
 export function Sidebar() {
     const pathname = usePathname()
 
     return (
-        <div className="w-64 bg-[#111827] border-r border-[#1f2937] h-full flex flex-col">
-            <div className="p-8">
-                <h1 className="text-xl font-bold flex items-center gap-2 text-white">
-                    <Flame className="text-green-500" fill="currentColor" size={24} />
+        <div className="w-64 bg-white border-r border-slate-200 h-full flex flex-col shadow-sm">
+            <div className="p-6 border-b border-slate-100">
+                <h1 className="text-xl font-bold flex items-center gap-2 text-slate-900">
+                    <div className="h-8 w-8 rounded-lg bg-green-600 flex items-center justify-center">
+                        <Flame className="text-white" fill="currentColor" size={18} />
+                    </div>
                     <span>PerfTracker</span>
                 </h1>
             </div>
-            <nav className="flex-1 px-4 space-y-1">
+            <nav className="flex-1 px-3 py-4 space-y-0.5">
                 {navItems.map((item) => {
                     const Icon = item.icon
                     const isActive = pathname === item.href
@@ -43,22 +45,22 @@ export function Sidebar() {
                             key={item.name}
                             href={item.href}
                             className={cn(
-                                "flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200",
+                                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150",
                                 isActive
-                                    ? "bg-green-500/10 text-green-500"
-                                    : "text-gray-400 hover:bg-gray-800/50 hover:text-gray-200"
+                                    ? "bg-green-50 text-green-700 font-semibold"
+                                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                             )}
                         >
-                            <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
+                            <Icon size={18} strokeWidth={isActive ? 2.5 : 2} className={isActive ? "text-green-600" : ""} />
                             {item.name}
                         </Link>
                     )
                 })}
             </nav>
-            <div className="p-6 border-t border-[#1f2937]">
+            <div className="p-3 border-t border-slate-100">
                 <Link
                     href="/settings"
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 transition-all duration-200"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all duration-150"
                 >
                     <Settings size={18} />
                     Settings
