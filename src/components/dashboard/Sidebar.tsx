@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { useAuth } from '@/context/AuthContext'
 import {
     LayoutDashboard,
     BookOpen,
@@ -12,7 +13,8 @@ import {
     History,
     BarChart3,
     Settings,
-    Flame
+    Flame,
+    LogOut
 } from 'lucide-react'
 
 const navItems = [
@@ -27,6 +29,7 @@ const navItems = [
 
 export function Sidebar() {
     const pathname = usePathname()
+    const { user, logout } = useAuth()
 
     return (
         <div className="w-64 bg-white border-r border-slate-200 h-full flex flex-col shadow-sm">
@@ -59,14 +62,32 @@ export function Sidebar() {
                     )
                 })}
             </nav>
-            <div className="p-3 border-t border-slate-100">
+            <div className="p-3 border-t border-slate-100 space-y-0.5">
+                {user && (
+                    <div className="px-3 py-2 mb-1">
+                        <p className="text-sm font-semibold text-slate-800 truncate">{user.username}</p>
+                        <p className="text-xs text-slate-400 truncate">{user.email}</p>
+                    </div>
+                )}
                 <Link
                     href="/settings"
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all duration-150"
+                    className={cn(
+                        "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150",
+                        pathname === '/settings'
+                            ? "bg-green-50 text-green-700 font-semibold"
+                            : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    )}
                 >
-                    <Settings size={18} />
+                    <Settings size={18} strokeWidth={pathname === '/settings' ? 2.5 : 2} className={pathname === '/settings' ? "text-green-600" : ""} />
                     Settings
                 </Link>
+                <button
+                    onClick={logout}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 hover:text-red-600 transition-all duration-150 w-full"
+                >
+                    <LogOut size={18} />
+                    Log out
+                </button>
             </div>
         </div>
     )
