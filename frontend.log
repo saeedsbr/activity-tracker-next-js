@@ -256,3 +256,4 @@ https://react.dev/link/hydration-mismatch
  GET /dashboard 200 in 23ms (next.js: 2ms, application-code: 20ms)
  GET /dashboard 200 in 59ms (next.js: 1830µs, application-code: 57ms)
  GET /academics 200 in 13ms (next.js: 3ms, application-code: 10ms)
+ GET /analytics 200 in 37ms (next.js: 1992µs, application-code: 35ms)

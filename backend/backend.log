@@ -70,3 +70,4 @@
 2026-04-24T14:40:49.867+05:00  INFO 1176087 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
 Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
+Invalid JWT token: JWT strings must contain exactly 2 period characters. Found: 0
