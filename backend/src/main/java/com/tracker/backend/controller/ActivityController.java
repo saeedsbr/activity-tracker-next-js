@@ -33,6 +33,12 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.getUserSummary(user));
     }
 
+    @GetMapping
+    public ResponseEntity<?> getActivities() {
+        User user = getCurrentUser();
+        return ResponseEntity.ok(activityLogRepository.findByUserOrderByLogDateDesc(user));
+    }
+
     @PostMapping("/log")
     public ResponseEntity<?> logActivity(@Valid @RequestBody ActivityLogRequest request) {
         User user = getCurrentUser();
