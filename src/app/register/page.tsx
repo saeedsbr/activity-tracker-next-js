@@ -3,26 +3,34 @@
 import { useState } from 'react'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useAuth } from '@/context/AuthContext'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { Flame } from "lucide-react"
+import { Flame, AlertCircle } from "lucide-react"
 
 export default function RegisterPage() {
-    const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const router = useRouter()
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+    const { register } = useAuth()
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('Registering:', { email, username, password })
-        router.push('/login')
+        setIsSubmitting(true)
+        setError(null)
+        try {
+            await register(username, email, password)
+        } catch (err: any) {
+            setError(err.message)
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4 font-sans">
             <div className="w-full max-w-md">
-                {/* Logo */}
                 <div className="flex flex-col items-center mb-8">
                     <div className="h-12 w-12 rounded-2xl bg-green-600 flex items-center justify-center shadow-lg shadow-green-500/20 mb-3">
                         <Flame fill="currentColor" size={26} className="text-white" />
@@ -38,6 +46,12 @@ export default function RegisterPage() {
                     </CardHeader>
                     <form onSubmit={handleSubmit}>
                         <CardContent className="space-y-4 px-8 py-6">
+                            {error && (
+                                <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                                    <AlertCircle size={15} />
+                                    {error}
+                                </div>
+                            )}
                             <div className="space-y-1.5">
                                 <label className="text-xs font-semibold text-slate-500 uppercase tracking-widest">Username</label>
                                 <input
@@ -73,8 +87,12 @@ export default function RegisterPage() {
                             </div>
                         </CardContent>
                         <CardFooter className="flex flex-col gap-4 px-8 pb-8 pt-0">
-                            <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 rounded-lg transition-colors">
-                                Get Started
+                            <Button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 rounded-lg transition-colors disabled:opacity-60"
+                            >
+                                {isSubmitting ? 'Creating account...' : 'Get Started'}
                             </Button>
                             <p className="text-sm text-center text-slate-500">
                                 Already a member?{' '}

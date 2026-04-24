@@ -2,25 +2,26 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import AppLayout from "@/components/layout/AppLayout"
-import { BarChart3, TrendingUp, BookOpen, Briefcase, Activity, Flame, Award } from "lucide-react"
-
-const weeklyData = [
-    { day: 'Mon', academic: 2, business: 1, health: 1 },
-    { day: 'Tue', academic: 1, business: 2, health: 1 },
-    { day: 'Wed', academic: 0, business: 1, health: 2 },
-    { day: 'Thu', academic: 2, business: 0, health: 1 },
-    { day: 'Fri', academic: 1, business: 2, health: 1 },
-    { day: 'Sat', academic: 1, business: 1, health: 2 },
-    { day: 'Sun', academic: 0, business: 0, health: 1 },
-]
-
-const maxVal = 4
+import { BarChart3, TrendingUp, BookOpen, Briefcase, Activity, Flame, Award, Loader2, AlertCircle } from "lucide-react"
+import { useActivitySummary } from "@/hooks/useActivitySummary"
 
 export default function AnalyticsPage() {
+    const { data: summary, isLoading, isError } = useActivitySummary()
+    const streaks = summary?.streaks ?? []
+
+    const totalActivities = summary?.heatmap.reduce((sum, d) => sum + d.count, 0) ?? 0
+    const bestStreak = streaks.reduce((max, s) => Math.max(max, s.count), 0)
+    const activeDays = summary?.heatmap.filter(d => d.count > 0).length ?? 0
+
+    const categoryConf = [
+        { name: 'Academics', icon: BookOpen, color: 'text-blue-600', bg: 'bg-blue-50', bar: 'bg-blue-500' },
+        { name: 'Business', icon: Briefcase, color: 'text-violet-600', bg: 'bg-violet-50', bar: 'bg-violet-500' },
+        { name: 'Health', icon: Activity, color: 'text-green-600', bg: 'bg-green-50', bar: 'bg-green-500' },
+    ]
+
     return (
         <AppLayout>
             <div className="max-w-5xl mx-auto px-8 py-8 space-y-8">
-                {/* Header */}
                 <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-slate-100 flex items-center justify-center">
                         <BarChart3 size={20} className="text-slate-600" />
@@ -31,13 +32,20 @@ export default function AnalyticsPage() {
                     </div>
                 </div>
 
-                {/* Summary KPIs */}
+                {isError && (
+                    <div className="flex items-center gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
+                        <AlertCircle size={16} className="text-amber-500 shrink-0" />
+                        <p className="text-sm text-amber-700">Backend not running — start Spring Boot server for real data.</p>
+                    </div>
+                )}
+
+                {/* KPI Cards */}
                 <div className="grid grid-cols-4 gap-4">
                     {[
-                        { label: 'Total Activities', value: '124', icon: TrendingUp, color: 'text-green-600', bg: 'bg-green-50' },
-                        { label: 'Best Streak', value: '30d', icon: Flame, color: 'text-orange-500', bg: 'bg-orange-50' },
-                        { label: 'Avg / Day', value: '2.1', icon: BarChart3, color: 'text-blue-600', bg: 'bg-blue-50' },
-                        { label: 'Active Months', value: '4', icon: Award, color: 'text-violet-600', bg: 'bg-violet-50' },
+                        { label: 'Total Activities', value: isLoading ? '...' : String(totalActivities), icon: TrendingUp, color: 'text-green-600', bg: 'bg-green-50' },
+                        { label: 'Best Streak', value: isLoading ? '...' : `${bestStreak}d`, icon: Flame, color: 'text-orange-500', bg: 'bg-orange-50' },
+                        { label: 'Active Days', value: isLoading ? '...' : String(activeDays), icon: BarChart3, color: 'text-blue-600', bg: 'bg-blue-50' },
+                        { label: 'Categories', value: '3', icon: Award, color: 'text-violet-600', bg: 'bg-violet-50' },
                     ].map((k) => {
                         const Icon = k.icon
                         return (
@@ -49,83 +57,71 @@ export default function AnalyticsPage() {
                                             <Icon size={14} className={k.color} />
                                         </div>
                                     </div>
-                                    <p className={`text-2xl font-extrabold ${k.color}`}>{k.value}</p>
+                                    {isLoading ? (
+                                        <Loader2 size={18} className="animate-spin text-slate-300" />
+                                    ) : (
+                                        <p className={`text-2xl font-extrabold ${k.color}`}>{k.value}</p>
+                                    )}
                                 </CardContent>
                             </Card>
                         )
                     })}
                 </div>
 
-                {/* Weekly Bar Chart (Pure CSS) */}
-                <div>
-                    <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Weekly Activity Breakdown</h2>
-                    <Card className="border border-slate-200 shadow-sm rounded-2xl">
-                        <CardContent className="p-6">
-                            <div className="flex items-end justify-around gap-2 h-40">
-                                {weeklyData.map((d) => (
-                                    <div key={d.day} className="flex flex-col items-center gap-1 flex-1">
-                                        <div className="flex flex-col justify-end gap-0.5 w-full" style={{ height: 120 }}>
-                                            {d.academic > 0 && (
-                                                <div className="w-full rounded-t-sm bg-blue-400 transition-all" style={{ height: `${(d.academic / maxVal) * 100}%` }} />
-                                            )}
-                                            {d.business > 0 && (
-                                                <div className="w-full bg-violet-400 transition-all" style={{ height: `${(d.business / maxVal) * 100}%` }} />
-                                            )}
-                                            {d.health > 0 && (
-                                                <div className="w-full rounded-b-sm bg-green-400 transition-all" style={{ height: `${(d.health / maxVal) * 100}%` }} />
-                                            )}
-                                            {d.academic === 0 && d.business === 0 && d.health === 0 && (
-                                                <div className="w-full rounded-sm bg-slate-100 transition-all" style={{ height: '8px' }} />
-                                            )}
-                                        </div>
-                                        <span className="text-xs text-slate-400">{d.day}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            {/* Legend */}
-                            <div className="flex gap-5 mt-4 justify-center">
-                                <div className="flex items-center gap-1.5"><div className="h-2.5 w-2.5 rounded-sm bg-blue-400" /><span className="text-xs text-slate-500">Academics</span></div>
-                                <div className="flex items-center gap-1.5"><div className="h-2.5 w-2.5 rounded-sm bg-violet-400" /><span className="text-xs text-slate-500">Business</span></div>
-                                <div className="flex items-center gap-1.5"><div className="h-2.5 w-2.5 rounded-sm bg-green-400" /><span className="text-xs text-slate-500">Health</span></div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
-
-                {/* Current Streaks Breakdown */}
+                {/* Current Streaks */}
                 <div>
                     <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Current Streaks</h2>
                     <div className="grid grid-cols-3 gap-4">
-                        {[
-                            { category: 'Academics', streak: 12, best: 24, icon: BookOpen, color: 'text-blue-600', bg: 'bg-blue-50', bar: 'bg-blue-500' },
-                            { category: 'Business', streak: 5, best: 18, icon: Briefcase, color: 'text-violet-600', bg: 'bg-violet-50', bar: 'bg-violet-500' },
-                            { category: 'Health', streak: 21, best: 30, icon: Activity, color: 'text-green-600', bg: 'bg-green-50', bar: 'bg-green-500' },
-                        ].map((s) => {
-                            const Icon = s.icon
-                            const pct = Math.round((s.streak / s.best) * 100)
+                        {categoryConf.map((cfg) => {
+                            const Icon = cfg.icon
+                            const streakData = streaks.find(s => s.category === cfg.name)
+                            const count = streakData?.count ?? 0
                             return (
-                                <Card key={s.category} className="border border-slate-200 shadow-sm rounded-2xl">
+                                <Card key={cfg.name} className="border border-slate-200 shadow-sm rounded-2xl">
                                     <CardContent className="p-5">
                                         <div className="flex items-center gap-2 mb-3">
-                                            <div className={`h-7 w-7 rounded-lg ${s.bg} flex items-center justify-center`}>
-                                                <Icon size={14} className={s.color} />
+                                            <div className={`h-7 w-7 rounded-lg ${cfg.bg} flex items-center justify-center`}>
+                                                <Icon size={14} className={cfg.color} />
                                             </div>
-                                            <span className="text-sm font-semibold text-slate-700">{s.category}</span>
+                                            <span className="text-sm font-semibold text-slate-700">{cfg.name}</span>
                                         </div>
-                                        <div className="flex items-end gap-1 mb-3">
-                                            <span className={`text-2xl font-extrabold ${s.color}`}>{s.streak}</span>
-                                            <span className="text-xs text-slate-400 mb-0.5">/ {s.best} days best</span>
-                                        </div>
-                                        <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                                            <div className={`h-full ${s.bar} rounded-full`} style={{ width: `${pct}%` }} />
-                                        </div>
-                                        <p className="text-xs text-slate-400 mt-1">{pct}% of best</p>
+                                        {isLoading ? (
+                                            <Loader2 size={18} className="animate-spin text-slate-300" />
+                                        ) : (
+                                            <>
+                                                <div className="flex items-end gap-1 mb-3">
+                                                    <span className={`text-2xl font-extrabold ${cfg.color}`}>{count}</span>
+                                                    <span className="text-xs text-slate-400 mb-0.5">day streak</span>
+                                                </div>
+                                                <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                                    <div className={`h-full ${cfg.bar} rounded-full transition-all`} style={{ width: `${Math.min(count * 5, 100)}%` }} />
+                                                </div>
+                                                <p className="text-xs text-slate-400 mt-1">Last: {streakData?.lastActivity ?? '—'}</p>
+                                            </>
+                                        )}
                                     </CardContent>
                                 </Card>
                             )
                         })}
                     </div>
                 </div>
+
+                {/* Heatmap data summary */}
+                {!isLoading && !isError && summary?.heatmap && summary.heatmap.length > 0 && (
+                    <div>
+                        <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Activity Heatmap Data</h2>
+                        <Card className="border border-slate-200 shadow-sm rounded-2xl overflow-hidden">
+                            <div className="divide-y divide-slate-100 max-h-64 overflow-y-auto">
+                                {summary.heatmap.sort((a, b) => b.date.localeCompare(a.date)).map((d) => (
+                                    <div key={d.date} className="flex items-center justify-between px-5 py-2.5">
+                                        <span className="text-sm text-slate-600">{d.date}</span>
+                                        <span className="text-sm font-semibold text-green-600">{d.count} {d.count === 1 ? 'activity' : 'activities'}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </Card>
+                    </div>
+                )}
             </div>
         </AppLayout>
     )

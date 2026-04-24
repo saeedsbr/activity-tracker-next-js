@@ -2,21 +2,16 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import AppLayout from "@/components/layout/AppLayout"
-import { Briefcase, Flame, CheckCircle2, Clock, PlusCircle, DollarSign } from "lucide-react"
-
-const activities = [
-    { id: 1, name: 'MERN Stack Project', date: '2024-03-20', duration: '3h 00m', notes: 'Completed API integration' },
-    { id: 2, name: 'Client Meeting Prep', date: '2024-03-19', duration: '1h 15m', notes: 'Prepared slides & demo' },
-    { id: 3, name: 'Market Research', date: '2024-03-18', duration: '2h 00m', notes: 'Competitor analysis' },
-    { id: 4, name: 'Freelance Invoice Work', date: '2024-03-17', duration: '1h 30m', notes: 'Completed client task' },
-    { id: 5, name: 'Business Plan Update', date: '2024-03-16', duration: '1h 45m', notes: 'Financial projections' },
-]
+import { Briefcase, Flame, PlusCircle, Loader2, AlertCircle } from "lucide-react"
+import { useActivitySummary } from "@/hooks/useActivitySummary"
 
 export default function BusinessPage() {
+    const { data: summary, isLoading, isError } = useActivitySummary()
+    const streak = summary?.streaks.find(s => s.category === 'Business')
+
     return (
         <AppLayout>
             <div className="max-w-5xl mx-auto px-8 py-8 space-y-8">
-                {/* Header */}
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-xl bg-violet-50 flex items-center justify-center">
@@ -33,69 +28,54 @@ export default function BusinessPage() {
                     </button>
                 </div>
 
-                {/* Stats Row */}
+                {isError && (
+                    <div className="flex items-center gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
+                        <AlertCircle size={16} className="text-amber-500 shrink-0" />
+                        <p className="text-sm text-amber-700">Backend not running — start Spring Boot server for real data.</p>
+                    </div>
+                )}
+
                 <div className="grid grid-cols-3 gap-4">
                     <Card className="border border-slate-200 shadow-sm rounded-2xl">
                         <CardContent className="p-5">
                             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Current Streak</p>
-                            <div className="flex items-end gap-1">
-                                <span className="text-3xl font-extrabold text-violet-600">5</span>
-                                <span className="text-slate-400 text-sm mb-0.5">days</span>
-                            </div>
-                            <div className="flex items-center gap-1 mt-1">
-                                <Flame size={13} className="text-orange-400" fill="currentColor" />
-                                <span className="text-xs text-slate-500">Keep it going!</span>
-                            </div>
+                            {isLoading ? <Loader2 size={20} className="animate-spin text-slate-300" /> : (
+                                <>
+                                    <div className="flex items-end gap-1">
+                                        <span className="text-3xl font-extrabold text-violet-600">{streak?.count ?? 0}</span>
+                                        <span className="text-slate-400 text-sm mb-0.5">days</span>
+                                    </div>
+                                    <div className="flex items-center gap-1 mt-1">
+                                        <Flame size={13} className="text-orange-400" fill="currentColor" />
+                                        <span className="text-xs text-slate-500">{streak?.count ? 'Keep it going!' : 'Start your streak!'}</span>
+                                    </div>
+                                </>
+                            )}
                         </CardContent>
                     </Card>
                     <Card className="border border-slate-200 shadow-sm rounded-2xl">
                         <CardContent className="p-5">
-                            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">This Week</p>
-                            <div className="flex items-end gap-1">
-                                <span className="text-3xl font-extrabold text-slate-800">5</span>
-                                <span className="text-slate-400 text-sm mb-0.5">sessions</span>
-                            </div>
-                            <p className="text-xs text-slate-500 mt-1">9h 30m total</p>
+                            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Last Activity</p>
+                            <p className="text-base font-bold text-slate-700">{streak?.lastActivity ?? '—'}</p>
+                            <p className="text-xs text-slate-400 mt-1">Most recent log date</p>
                         </CardContent>
                     </Card>
                     <Card className="border border-slate-200 shadow-sm rounded-2xl">
                         <CardContent className="p-5">
-                            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Best Streak</p>
-                            <div className="flex items-end gap-1">
-                                <span className="text-3xl font-extrabold text-slate-800">18</span>
-                                <span className="text-slate-400 text-sm mb-0.5">days</span>
-                            </div>
-                            <p className="text-xs text-slate-500 mt-1">Personal best</p>
+                            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Status</p>
+                            <p className="text-base font-bold text-slate-700">
+                                {streak?.count ? '✅ Active' : '⚠️ Not started'}
+                            </p>
                         </CardContent>
                     </Card>
                 </div>
 
-                {/* Activity Log */}
                 <div>
-                    <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Recent Sessions</h2>
+                    <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Session History</h2>
                     <Card className="border border-slate-200 shadow-sm rounded-2xl overflow-hidden">
-                        <ul className="divide-y divide-slate-100">
-                            {activities.map((a) => (
-                                <li key={a.id} className="flex items-center justify-between px-6 py-4 hover:bg-slate-50 transition-colors">
-                                    <div className="flex items-center gap-4">
-                                        <div className="h-9 w-9 rounded-xl bg-violet-50 flex items-center justify-center shrink-0">
-                                            <CheckCircle2 size={16} className="text-violet-600" />
-                                        </div>
-                                        <div>
-                                            <p className="font-semibold text-slate-800 text-sm">{a.name}</p>
-                                            <p className="text-xs text-slate-400">{a.notes}</p>
-                                        </div>
-                                    </div>
-                                    <div className="text-right shrink-0">
-                                        <div className="flex items-center gap-1 text-xs text-slate-500">
-                                            <Clock size={12} />
-                                            {a.duration}
-                                        </div>
-                                        <p className="text-xs text-slate-400 mt-0.5">{a.date}</p>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
+                        <div className="px-6 py-8 text-center text-slate-400 text-sm">
+                            Log activities from the <span className="font-semibold text-green-600">Dashboard Quick Log</span> to populate this history.
+                        </div>
                     </Card>
                 </div>
             </div>

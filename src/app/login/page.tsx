@@ -5,22 +5,31 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Button } from "@/components/ui/button"
 import { useAuth } from '@/context/AuthContext'
 import Link from 'next/link'
-import { Flame } from "lucide-react"
+import { Flame, AlertCircle } from "lucide-react"
 
 export default function LoginPage() {
-    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [error, setError] = useState<string | null>(null)
     const { login } = useAuth()
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        login('fake-jwt-token', { id: 1, email, username: email.split('@')[0] })
+        setIsSubmitting(true)
+        setError(null)
+        try {
+            await login(username, password)
+        } catch (err: any) {
+            setError(err.message)
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4 font-sans">
             <div className="w-full max-w-md">
-                {/* Logo */}
                 <div className="flex flex-col items-center mb-8">
                     <div className="h-12 w-12 rounded-2xl bg-green-600 flex items-center justify-center shadow-lg shadow-green-500/20 mb-3">
                         <Flame fill="currentColor" size={26} className="text-white" />
@@ -36,13 +45,19 @@ export default function LoginPage() {
                     </CardHeader>
                     <form onSubmit={handleSubmit}>
                         <CardContent className="space-y-4 px-8 py-6">
+                            {error && (
+                                <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                                    <AlertCircle size={15} />
+                                    {error}
+                                </div>
+                            )}
                             <div className="space-y-1.5">
-                                <label className="text-xs font-semibold text-slate-500 uppercase tracking-widest">Email</label>
+                                <label className="text-xs font-semibold text-slate-500 uppercase tracking-widest">Username</label>
                                 <input
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="name@example.com"
+                                    type="text"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    placeholder="johndoe"
                                     className="w-full bg-slate-50 border border-slate-200 text-slate-800 px-4 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500/40 placeholder:text-slate-400"
                                     required
                                 />
@@ -60,8 +75,12 @@ export default function LoginPage() {
                             </div>
                         </CardContent>
                         <CardFooter className="flex flex-col gap-4 px-8 pb-8 pt-0">
-                            <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 rounded-lg transition-colors">
-                                Sign In
+                            <Button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 rounded-lg transition-colors disabled:opacity-60"
+                            >
+                                {isSubmitting ? 'Signing in...' : 'Sign In'}
                             </Button>
                             <p className="text-sm text-center text-slate-500">
                                 New to PerfTracker?{' '}
